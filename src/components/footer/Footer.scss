@@ -1,0 +1,39 @@
+@use "../../styles/mixins.scss" as *;
+
+.footer {
+  background-color: var(--primary-bg);
+  padding-block: .5rem;
+
+  &_container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13.4rem, 1fr));
+    gap: 4rem 1rem;
+  }
+
+  &_col img {
+    width: 3rem;
+  }
+
+  h3 {
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  &_col {
+    a {
+      color: var(--pale-gray);
+      display: block;
+      margin-top: 0.5rem;
+    }
+  }
+  &_col:not(:first-child) {
+    margin-inline: auto;
+
+    @include respond(phone) {
+      margin: 0;
+    }
+  }
+}

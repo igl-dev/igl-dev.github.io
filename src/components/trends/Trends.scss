@@ -1,0 +1,46 @@
+@use "../../styles/mixins.scss" as *;
+
+.trends {
+  background-color: var(--secondary-bg);
+  padding-block: 5rem;
+
+  &_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 3rem;
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+      background: none;
+    }
+  }
+
+  &_left img {
+    width: 90%;
+
+    @include respond(tab-port) {
+      width: 80%;
+      margin-inline: auto;
+    }
+  }
+
+  &_right {
+    padding: 15px;
+  }
+  h5 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  p {
+    color: var(--near-black);
+  }
+  a {
+    margin-top: 10px;
+  }
+}

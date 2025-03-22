@@ -1,0 +1,22 @@
+@use "../../styles/mixins.scss" as *;
+
+.games {
+  background-color: var(--primary-bg);
+  padding-block: 1rem;
+
+  &_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  img {
+    width: 7rem;
+
+    @include respond(phone) {
+      margin-inline: auto;
+    }
+  }
+}

@@ -1,0 +1,160 @@
+@use "../../styles/mixins" as *; // Import the mixins file
+
+.avatar {
+  padding: 4rem 2rem;
+  background-color: var(--primary-bg);
+  text-align: center;
+
+  h1 {
+    font-size: 3.3rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+
+  .avatar_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // 3 columns layout
+    gap: 1.5rem;
+    background-color: #ffffff; // White background
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    @include respond(tab-land) {
+      grid-template-columns: repeat(2, 1fr); // 2 columns on tablets
+    }
+
+    @include respond(tab-port) {
+      grid-template-columns: 1fr; // 1 column on smaller tablets
+    }
+
+    @include respond(phones) {
+      padding: 1rem;
+      gap: 1rem;
+    }
+  }
+
+  .avatar_card {
+    background-size: cover; // Fit image within the container
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 550px;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .card_content {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 1rem;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      position: absolute;
+      width: 19.5rem;
+      bottom: -10rem;
+
+      .card_description {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .card_title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0.5rem 0;
+      }
+
+      .socials {
+        display: flex;
+        justify-content: space-around;
+        gap: 1rem;
+
+        .social_link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background-color: var(--button-color);
+          color: var(--text-color);
+          border-radius: 50%;
+          transition: background-color 0.3s ease, transform 0.2s ease;
+
+          &:hover {
+            background-color: var(--button-hover);
+            transform: scale(1.1);
+          }
+
+          .social_icons {
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+    // Hover animations
+    &:hover .card_content {
+      animation: show-content 1s forwards;
+      opacity: 1;
+    }
+
+    &:hover {
+      animation: remove-overflow 2s forwards;
+    }
+
+    &:not(:hover) {
+      animation: show-overflow 2s forwards;
+    }
+
+    &:not(:hover) .card_content {
+      animation: remove-content 1s forwards;
+    }
+  }
+}
+
+// Keyframe animations
+@keyframes show-content {
+  50% {
+    transform: translateY(-11rem);
+  }
+  100% {
+    transform: translateY(-8rem);
+  }
+}
+
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
+  }
+}
+
+@keyframes remove-content {
+  0% {
+    transform: translateY(-7rem);
+  }
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes show-overflow {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+  50% {
+    overflow: hidden;
+  }
+}
